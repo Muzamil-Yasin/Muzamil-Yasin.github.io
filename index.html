@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muzamil Yasin | DevOps Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0d1117;
+    --surface: #161b22;
+    --surface2: #21262d;
+    --border: #30363d;
+    --text: #e6edf3;
+    --muted: #8b949e;
+    --accent: #2d9cdb;
+    --accent2: #58a6ff;
+    --green: #3fb950;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Inter', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  a { color: var(--accent2); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(13,17,23,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+  }
+
+  .nav-logo {
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--accent);
+    letter-spacing: 0.02em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 13px;
+    color: var(--muted);
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--text); text-decoration: none; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 80px 2rem 4rem;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .hero-inner { width: 100%; }
+
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--green);
+    margin-bottom: 1.2rem;
+    letter-spacing: 0.05em;
+  }
+
+  .hero-name {
+    font-size: clamp(2.4rem, 6vw, 4rem);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+
+  .hero-name span {
+    color: var(--accent);
+  }
+
+  .hero-tagline {
+    font-size: 1.1rem;
+    color: var(--muted);
+    max-width: 520px;
+    margin-bottom: 2rem;
+    line-height: 1.7;
+  }
+
+  .hero-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    background: var(--surface);
+    letter-spacing: 0.03em;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+  }
+
+  .btn-primary:hover { background: #1a8ac4; text-decoration: none; color: #fff; }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+
+  .btn-ghost:hover { border-color: var(--accent2); color: var(--accent2); text-decoration: none; }
+
+  /* SECTIONS */
+  section {
+    padding: 5rem 2rem;
+    max-width: 860px;
+    margin: 0 auto;
+    border-top: 1px solid var(--border);
+  }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-size: 1.6rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-bottom: 2.5rem;
+  }
+
+  /* EXPERIENCE */
+  .exp-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    transition: border-color 0.2s;
+  }
+
+  .exp-card:hover { border-color: var(--accent); }
+
+  .exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .exp-role { font-weight: 600; font-size: 1rem; }
+  .exp-company { color: var(--accent2); font-size: 0.9rem; margin-bottom: 0.25rem; }
+  .exp-date {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  .exp-bullets {
+    list-style: none;
+    margin-top: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .exp-bullets li {
+    color: var(--muted);
+    font-size: 14px;
+    padding-left: 1.2rem;
+    position: relative;
+  }
+
+  .exp-bullets li::before {
+    content: '>';
+    position: absolute;
+    left: 0;
+    color: var(--green);
+    font-family: var(--mono);
+    font-size: 12px;
+    top: 2px;
+  }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1rem;
+  }
+
+  .skill-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem;
+    transition: border-color 0.2s;
+  }
+
+  .skill-card:hover { border-color: var(--accent); }
+
+  .skill-category {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+  }
+
+  .skill-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .skill-pill {
+    font-size: 12px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    background: var(--surface2);
+    color: var(--text);
+    border: 1px solid var(--border);
+    font-family: var(--mono);
+  }
+
+  /* PROJECTS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+
+  .project-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .project-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+
+  .project-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .project-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .project-desc {
+    font-size: 13px;
+    color: var(--muted);
+    flex: 1;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+
+  .project-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 3px;
+    background: var(--surface2);
+    color: var(--accent2);
+    border: 1px solid var(--border);
+  }
+
+  /* CERT */
+  .cert-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .cert-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+  }
+
+  .cert-badge {
+    font-size: 1.4rem;
+    flex-shrink: 0;
+  }
+
+  .cert-name { font-weight: 500; font-size: 0.9rem; }
+  .cert-issuer { font-size: 12px; color: var(--muted); }
+
+  /* CONTACT */
+  .contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 2rem;
+    color: var(--muted);
+    font-size: 12px;
+    border-top: 1px solid var(--border);
+    font-family: var(--mono);
+  }
+
+  /* TERMINAL BLINK */
+  .blink {
+    animation: blink 1s step-end infinite;
+    color: var(--green);
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .hero-name { font-size: 2.2rem; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .blink { animation: none; }
+    .project-card:hover { transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-logo">muzamil.dev<span class="blink">_</span></span>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <p class="hero-eyebrow">// hello world</p>
+    <h1 class="hero-name">Muzamil Yasin<br><span>DevOps Engineer</span></h1>
+    <p class="hero-tagline">
+      I build automated, secure, and reliable infrastructure. From CI/CD pipelines to cloud provisioning,
+      I focus on shipping software faster without breaking things.
+    </p>
+    <div class="hero-stack">
+      <span class="tag">AWS</span>
+      <span class="tag">Terraform</span>
+      <span class="tag">Docker</span>
+      <span class="tag">GitHub Actions</span>
+      <span class="tag">CodeDeploy</span>
+      <span class="tag">Linux</span>
+      <span class="tag">Python</span>
+      <span class="tag">Bash</span>
+    </div>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="mailto:strikerrdx2000@gmail.com">Get in touch</a>
+      <a class="btn btn-ghost" href="https://github.com/muzamilyasin" target="_blank">GitHub</a>
+      <a class="btn btn-ghost" href="https://linkedin.com/in/muzamilyasin" target="_blank">LinkedIn</a>
+    </div>
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <p class="section-label">// work</p>
+  <h2 class="section-title">Experience</h2>
+
+  <div class="exp-card">
+    <div class="exp-header">
+      <div>
+        <div class="exp-role">DevOps Engineer Intern</div>
+        <div class="exp-company">Eon OneByte, Lahore, Pakistan</div>
+      </div>
+      <span class="exp-date">Aug 2025 - Dec 2025</span>
+    </div>
+    <ul class="exp-bullets">
+      <li>Built a Node.js application from scratch including a dynamic UI and full unit test coverage, serving as the base for an end-to-end DevSecOps pipeline.</li>
+      <li>Provisioned all AWS infrastructure from scratch using Terraform: EC2, ECR, CodePipeline, CodeBuild, and CodeDeploy with no manual steps.</li>
+      <li>Built a multi-stage GitHub Actions CI pipeline with ESLint, unit tests, and npm audit as mandatory security gates blocking any failing deployment.</li>
+      <li>Containerized the app with Docker, pushed images to ECR, and configured CodeDeploy to pull and run containers directly on EC2.</li>
+      <li>Wrote Bash lifecycle scripts (start.sh, stop.sh, healthcheck.sh) integrated into appspec.yml for zero-downtime deployments with automated rollback.</li>
+      <li>Hardened the full stack with least-privilege IAM roles, secure VPC networking, and continuous dependency vulnerability monitoring.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <p class="section-label">// builds</p>
+  <h2 class="section-title">Projects</h2>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="project-icon">🔒</div>
+      <div class="project-name">Secure CI/CD Pipeline on EC2</div>
+      <p class="project-desc">
+        Full DevSecOps pipeline for a Node.js app: Docker container deployed to EC2 via CodeDeploy,
+        all infra as Terraform, GitHub Actions CI with security gates, automated rollback on health check failure.
+      </p>
+      <div class="project-tags">
+        <span class="project-tag">Terraform</span>
+        <span class="project-tag">Docker</span>
+        <span class="project-tag">CodeDeploy</span>
+        <span class="project-tag">GitHub Actions</span>
+        <span class="project-tag">AWS ECR</span>
+        <span class="project-tag">Bash</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-icon">📡</div>
+      <div class="project-name">Packet Spoofer</div>
+      <p class="project-desc">
+        Real-time network traffic analysis tool to detect and flag malicious activity patterns.
+        Built in Python with live packet inspection and threat detection logic, deployed on AWS.
+      </p>
+      <div class="project-tags">
+        <span class="project-tag">Python</span>
+        <span class="project-tag">Scapy</span>
+        <span class="project-tag">AWS</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-icon">🔬</div>
+      <div class="project-name">Polyp Segmentation Pipeline</div>
+      <p class="project-desc">
+        Real-time medical image segmentation model achieving 96% accuracy for early-stage cancer detection,
+        deployed via an AWS-hosted inference pipeline integrated with Firebase.
+      </p>
+      <div class="project-tags">
+        <span class="project-tag">TensorFlow</span>
+        <span class="project-tag">AWS</span>
+        <span class="project-tag">Firebase</span>
+        <span class="project-tag">Python</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <p class="section-label">// tools</p>
+  <h2 class="section-title">Skills</h2>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-category">Cloud</div>
+      <div class="skill-items">
+        <span class="skill-pill">EC2</span>
+        <span class="skill-pill">ECR</span>
+        <span class="skill-pill">CodePipeline</span>
+        <span class="skill-pill">CodeBuild</span>
+        <span class="skill-pill">CodeDeploy</span>
+        <span class="skill-pill">IAM</span>
+        <span class="skill-pill">S3</span>
+        <span class="skill-pill">VPC</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-category">IaC and CI/CD</div>
+      <div class="skill-items">
+        <span class="skill-pill">Terraform</span>
+        <span class="skill-pill">GitHub Actions</span>
+        <span class="skill-pill">CodeDeploy</span>
+        <span class="skill-pill">appspec.yml</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-category">Containers</div>
+      <div class="skill-items">
+        <span class="skill-pill">Docker</span>
+        <span class="skill-pill">Amazon ECR</span>
+        <span class="skill-pill">Dockerfile</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-category">Security</div>
+      <div class="skill-items">
+        <span class="skill-pill">IAM least-privilege</span>
+        <span class="skill-pill">npm audit</span>
+        <span class="skill-pill">ESLint</span>
+        <span class="skill-pill">DevSecOps</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-category">Scripting</div>
+      <div class="skill-items">
+        <span class="skill-pill">Bash</span>
+        <span class="skill-pill">Python</span>
+        <span class="skill-pill">Node.js</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-category">OS and Tools</div>
+      <div class="skill-items">
+        <span class="skill-pill">Linux</span>
+        <span class="skill-pill">Git</span>
+        <span class="skill-pill">GitHub</span>
+        <span class="skill-pill">VS Code</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="about">
+  <p class="section-label">// credentials</p>
+  <h2 class="section-title">Certifications and Awards</h2>
+  <div class="cert-list">
+    <div class="cert-item">
+      <span class="cert-badge">☁️</span>
+      <div>
+        <div class="cert-name">AWS Certified Cloud Practitioner</div>
+        <div class="cert-issuer">Amazon Web Services, Sep 2025</div>
+      </div>
+    </div>
+    <div class="cert-item">
+      <span class="cert-badge">🥉</span>
+      <div>
+        <div class="cert-name">Bronze Award: 3rd place, Final Year Project</div>
+        <div class="cert-issuer">KUST, Aug 2025</div>
+      </div>
+    </div>
+    <div class="cert-item">
+      <span class="cert-badge">🎓</span>
+      <div>
+        <div class="cert-name">BS Computer Science</div>
+        <div class="cert-issuer">KUST, Pakistan, 2021 - 2025</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-label">// reach out</p>
+  <h2 class="section-title">Get in Touch</h2>
+  <p style="color: var(--muted); max-width: 480px;">
+    Open to Junior DevOps and Cloud Engineering roles. Feel free to reach out via email or connect on LinkedIn.
+  </p>
+  <div class="contact-links">
+    <a class="btn btn-primary" href="mailto:strikerrdx2000@gmail.com">strikerrdx2000@gmail.com</a>
+    <a class="btn btn-ghost" href="https://www.linkedin.com/in/muzamil-yasin-71206b39a/" target="_blank">LinkedIn</a>
+    <a class="btn btn-ghost" href="https://github.com/Muzamil-Yasin" target="_blank">GitHub</a>
+  </div>
+</section>
+
+<footer>
+  Built by Muzamil Yasin &nbsp;|&nbsp; Lahore, Pakistan &nbsp;|&nbsp; 2025
+</footer>
+
+</body>
+</html>
